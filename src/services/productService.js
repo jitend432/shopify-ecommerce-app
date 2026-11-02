@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Apne Shopify Store ki details yahan configure karein
-const SHOPIFY_DOMAIN = 'your-store.myshopify.com';
+const SHOPIFY_DOMAIN = '1nw0jr-qr.myshopify.com';
 const STOREFRONT_ACCESS_TOKEN = 'your_storefront_access_token';
 
 const storefrontAPI = axios.create({
