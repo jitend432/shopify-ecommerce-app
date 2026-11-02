@@ -1,97 +1,63 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native E-commerce Mobile Application
 
-# Getting Started
+Ek modern, cross-platform (Android & iOS) e-commerce mobile application jise **Gymshark** ke visual reference aur modular architecture ke mutabiq banaya gaya hai.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🚀 Features & Shopping Journey
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+1. **Branded Welcome & Navigation:** Clean splash/welcome flow aur header navigation.
+2. **Product Listing (Home Screen):** Sample products ko smooth list mein display karna.
+3. **Product Detail & Variant Selection:** Product images, pricing, description, aur size variants (`S, M, L, XL`) ki selection ke sath out-of-stock/unavailable option handling.
+4. **Cart & Redux State Management:** Redux Toolkit (`cartSlice`) ka use karke items add/remove karna, quantity update karna, aur total price automatic calculation.
+5. **Checkout & Order Flow:** Success alert message, cart clear action, aur home screen par redirecting flow.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 🛠️ Tech Stack & Architecture
 
-# OR using Yarn
-yarn start
-```
+* **Framework:** React Native CLI (JavaScript / ES6+)
+* **State Management:** Redux Toolkit (`@reduxjs/toolkit`, `react-redux`)
+* **Navigation:** React Navigation
+* **Styling:** StyleSheet (Modular & Theme-based variables)
+* **Data Layer Isolation:** Services layer (`productService.js`) jo Shopify Storefront API (GraphQL) aur offline/401 error handling ke liye **Mock Data Fallback** dono ko support karti hai.
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 📋 Setup & Run Instructions
 
-### Android
+### Prerequisites
+* Node.js (v18+)
+* React Native CLI environment setup (Android Studio / Xcode)
 
-```sh
-# Using npm
-npm run android
+### Installation Steps
 
-# OR using Yarn
-yarn android
-```
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd <project-folder>
 
-### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+2.  Install Dependencies:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+npm install
+# or
+yarn install
+Run for iOS (Mac only):
 
-```sh
-bundle install
-```
 
-Then, and every time you update your native dependencies, run:
+cd ios && pod install && cd ..
+npx react-native run-ios
 
-```sh
-bundle exec pod install
-```
+3. Run for Android:
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Ensure your Android Emulator is running or a physical device is connected via USB.
 
-```sh
-# Using npm
-npm run ios
+Terminal 1 (Start Metro):
 
-# OR using Yarn
-yarn ios
-```
+Bash
+npx react-native start
+Terminal 2 (Run App):
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Bash
+npx react-native run-android
