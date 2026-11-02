@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+import { productService } from '../services/productService'; // Yeh import add karo
 
 export const fetchProducts = createAsyncThunk(
   'product/fetchProducts',
   async (_, { rejectWithValue }) => {
     try {
-      return []; 
+      const data = await productService.getProducts(); // Yahan service call honi chahiye
+      return data; 
     } catch (error) {
       return rejectWithValue(error.message);
     }

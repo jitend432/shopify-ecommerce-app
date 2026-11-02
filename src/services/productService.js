@@ -1,67 +1,46 @@
-import axios from 'axios';
-
-
-const SHOPIFY_DOMAIN = 'graphql.myshopify.com';
-const STOREFRONT_ACCESS_TOKEN = 'dd4d45146c3b446db16022da1615287f';
-
-const storefrontAPI = axios.create({
-  baseURL: `https://${SHOPIFY_DOMAIN}/api/2023-10/graphql.json`,
-  headers: {
-    'X-Shopify-Storefront-Access-Token': STOREFRONT_ACCESS_TOKEN,
-    'Content-Type': 'application/json',
-  },
-});
-
 export const productService = {
   async getProducts() {
-    const query = `
+    // Dummy products list
+    const mockProducts = [
       {
-        products(first: 20) {
-          edges {
-            node {
-              id
-              title
-              description
-              variants(first: 1) {
-                edges {
-                  node {
-                    price {
-                      amount
-                      currencyCode
-                    }
-                  }
-                }
-              }
-              images(first: 1) {
-                edges {
-                  node {
-                    url
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
+        id: '1',
+        title: 'Professional Gym Dumbbell Set',
+        description: 'High-quality adjustable rubber coated dumbbells for heavy weight training.',
+        price: '1499.00',
+        currency: 'INR',
+        image: 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=500',
+      },
+      {
+        id: '2',
+        title: 'Heavy Duty Resistance Bands',
+        description: 'Set of 5 elastic workout bands for strength training and physical therapy.',
+        price: '499.00',
+        currency: 'INR',
+        image: 'https://images.unsplash.com/photo-1598289431512-b97b05177046?w=500',
+      },
+      {
+        id: '3',
+        title: 'Adjustable Workout Bench',
+        description: 'Sturdy steel foldable bench for incline, decline, and flat chest presses.',
+        price: '3499.00',
+        currency: 'INR',
+        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500',
+      },
+      {
+        id: '4',
+        title: 'Non-Slip Yoga & Gym Mat',
+        description: 'Extra thick cushioning mat for floor exercises, stretching, and yoga.',
+        price: '799.00',
+        currency: 'INR',
+        image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500',
+      },
+    ];
 
-    try {
-      const response = await storefrontAPI.post('', { query });
-      const products = response.data.data.products.edges.map(edge => {
-        const node = edge.node;
-        return {
-          id: node.id,
-          title: node.title,
-          description: node.description,
-          price: node.variants.edges[0]?.node.price.amount || '0.00',
-          currency: node.variants.edges[0]?.node.price.currencyCode || 'INR',
-          image: node.images.edges[0]?.node.url || '',
-        };
-      });
-      return products;
-    } catch (error) {
-      console.error('Error fetching products from Shopify:', error);
-      throw error;
-    }
+    // Simulate network latency for realistic feel
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(mockProducts);
+      }, 500);
+    });
   },
 };

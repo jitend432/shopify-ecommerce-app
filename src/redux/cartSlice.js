@@ -12,23 +12,24 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const newItem = action.payload;
+      const itemPrice = Number(newItem.price) || 0; // Price ko Number mein convert kiya
       const existingItem = state.items.find(item => item.id === newItem.id);
       
       state.totalQuantity++;
-      state.totalAmount += newItem.price;
+      state.totalAmount += itemPrice;
 
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
           title: newItem.title,
-          price: newItem.price,
+          price: itemPrice,
           quantity: 1,
-          totalPrice: newItem.price,
+          totalPrice: itemPrice,
           image: newItem.image,
         });
       } else {
         existingItem.quantity++;
-        existingItem.totalPrice += newItem.price;
+        existingItem.totalPrice += itemPrice;
       }
     },
     removeFromCart(state, action) {

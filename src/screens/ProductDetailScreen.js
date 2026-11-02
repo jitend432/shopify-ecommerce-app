@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux'; // Added
+import { addToCart } from '../redux/cartSlice'; // Added
 import { COLORS } from '../constants/theme';
 import { strings } from '../constants/strings';
 import Button from '../components/Button';
 import Header from '../components/Header';
 
 export default function ProductDetailScreen({ route, navigation }) {
+  const dispatch = useDispatch(); // Added dispatch hook
   const { product } = route.params || {};
   const [selectedVariant, setSelectedVariant] = useState('S');
   
@@ -51,7 +54,6 @@ export default function ProductDetailScreen({ route, navigation }) {
             {product?.description || 'High quality gym apparel designed for performance and comfort.'}
           </Text>
 
-          {/* Unavailable Option Handling */}
           {!isAvailable && (
             <Text style={styles.unavailableText}>Currently Unavailable / Out of Stock</Text>
           )}
@@ -62,7 +64,8 @@ export default function ProductDetailScreen({ route, navigation }) {
           title={isAvailable ? strings.addToBag : 'Out of Stock'}
           onPress={() => {
             if (isAvailable) {
-
+              dispatch(addToCart({ ...product, selectedSize: selectedVariant })); // Dispatch added here
+              navigation.navigate('Cart'); // Redirect to cart to see added item
             }
           }}
           disabled={!isAvailable}

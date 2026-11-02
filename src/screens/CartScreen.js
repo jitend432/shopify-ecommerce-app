@@ -48,7 +48,15 @@ export default function CartScreen({ navigation }) {
               <Text style={styles.totalLabel}>{strings.total}</Text>
               <Text style={styles.totalAmount}>₹{totalAmount}</Text>
             </View>
-            <Button title="Checkout" onPress={() => dispatch(clearCart())} />
+            {/* <Button title="Checkout" onPress={() => dispatch(clearCart())} /> */}
+            <Button 
+              title="Checkout" 
+              onPress={() => {
+                alert('Order Placed Successfully! 🎉');
+                dispatch(clearCart());
+                navigation.navigate('Home'); // Order hone ke baad wapas Home screen par bhej dega
+              }} 
+            />
           </View>
         </>
       )}
