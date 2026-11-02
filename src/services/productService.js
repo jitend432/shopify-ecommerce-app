@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const SHOPIFY_DOMAIN = '1nw0jr-qr.myshopify.com';
-const STOREFRONT_ACCESS_TOKEN = 'your_storefront_access_token';
+
+const SHOPIFY_DOMAIN = 'graphql.myshopify.com';
+const STOREFRONT_ACCESS_TOKEN = 'dd4d45146c3b446db16022da1615287f';
 
 const storefrontAPI = axios.create({
   baseURL: `https://${SHOPIFY_DOMAIN}/api/2023-10/graphql.json`,
